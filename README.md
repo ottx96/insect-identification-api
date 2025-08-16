@@ -1,3 +1,73 @@
+# Insect Identification API
+
+A Flask-based REST API for insect identification using computer vision and machine learning.
+
+## Features
+
+- REST API endpoint for insect identification
+- Base64 image processing
+- Integration with GBIF.org for species information
+- Confidence threshold validation
+- Comprehensive error handling
+
+## Setup
+
+1. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+2. Run the Flask application:
+```bash
+python app.py
+```
+
+The API will be available at `http://localhost:5000`
+
+## API Usage
+
+### POST /api/v1/identify
+
+Identify insects in a base64-encoded image.
+
+**Request Body:**
+```json
+{
+  "custom_id": "sdgbwkng23kwegjb",
+  "image_base64": "<base64 encoded image>"
+}
+```
+
+**Success Response (200):**
+```json
+{
+  "custom_id": "sdgbwkng23kwegjb",
+  "identified_insects": [
+    {
+      "probability": 0.85,
+      "latin_name": "Apis mellifera",
+      "gbif_id": 1340286
+    }
+  ],
+  "status_message": "Success"
+}
+```
+
+**Error Response (400):**
+```json
+{
+  "error": "Low confidence identification",
+  "status_message": "Low confidence identification"
+}
+```
+
+## Testing
+
+Use the provided test script:
+```bash
+python test_api.py
+```
+
 # 特性
 - 支持 2037 类 (可能是目, 科, 属或种等) 昆虫或其他节肢动物
 - 模型开源, 持续更新.
