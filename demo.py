@@ -10,7 +10,7 @@ from insectid import InsectIdentifier
 
 
 if __name__ == '__main__':
-    src_dirs = [r'images', r'E:\_raw\_insect']
+    src_dirs = [r'images']
     
     detector = InsectDetector()
     identifier = InsectIdentifier()
@@ -43,7 +43,7 @@ if __name__ == '__main__':
             if prob < 0.10:
                 text = 'Unknown'
             else:
-                text = '{}: {:.3f}'.format(results[0]['chinese_name'], results[0]['probability'])
+                text = '{}: {:.3f}'.format(results[0]['latin_name'], results[0]['probability'])
             position = [box[0] + 2, box[1] - 20]
             position[0] = min(max(position[0], 0), image_width)
             position[1] = min(max(position[1], 0), image_height)
