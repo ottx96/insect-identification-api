@@ -40,16 +40,16 @@ def decode_base64_image(base64_string):
 
 def get_gbif_species_id(latin_name):
     """Get GBIF species ID from Latin name using GBIF API"""
-    try:
-        # GBIF species search API
-        url = "https://api.gbif.org/v1/species/search"
-        params = {
-            'q': latin_name,
-            'rank': 'SPECIES',
-            'status': 'ACCEPTED',
-            'limit': 1
-        }
-        
+
+    # GBIF species search API
+    url = "https://api.gbif.org/v1/species"
+    params = {
+        'name': latin_name,
+        'offest': 0,
+        'limit': 1
+    }
+
+    try:    
         # Log the outgoing request
         logger.info(f"GBIF API Request - URL: {url}")
         logger.info(f"GBIF API Request - Parameters: {params}")
